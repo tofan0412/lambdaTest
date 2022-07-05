@@ -1,9 +1,6 @@
 package com.example.lambdatest.chapter2;
 
-import java.util.concurrent.Callable;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 public class FunctionalInterfaceExample {
     public static Integer addNum(Integer x) {
@@ -22,8 +19,16 @@ public class FunctionalInterfaceExample {
 
         // 3. Function : 하나의 매개변수를 받으며, 처리한 후 R을 반환하는 람다식 타입이다.
         Function<String, Integer> function = (String str) -> str.length();
-        Function<Integer, Integer> function2 = (count) -> FunctionalInterfaceExample.addNum(count);
+        Function<Integer, Integer> function2 = (count) -> FunctionalInterfaceExample.addNum(count); // 직접 작성한 예시 함수
         System.out.println(function2.apply(10));
+
+        // 4. Predicate : T객체를 매개변수로 받으며, 처리한 후 boolean 값을 반환하는 람다식의 타입이다.
+        Predicate predicate = (answer) -> true;
+        System.out.println(predicate.test("Hi"));
+
+        // 5. UnaryOperator : T객체를 매개변수로 받으며, 반환타입 역시 T객체이다.
+        UnaryOperator<String> unaryOperator = (word) -> "voca";
+
     }
 
 
