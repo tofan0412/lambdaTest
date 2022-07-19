@@ -20,7 +20,7 @@ public class TypeInterfaceExample {
         // Operator '+' cannot be applied to 'java.lang.Object', 'java.lang.Object' 라는 에러가 발생한다.
         // 변수에 사용할 타입으로 어떠한 타입도 지정하지 않았다.
         // 이경우 자바는 가장 기본이 되는 타입인 Object로 추정한다.
-        BinaryOperator add = (x, y) -> x + y;
+//        BinaryOperator add = (x, y) -> x + y;
 
 
         List<Integer> arr = new ArrayList<>(Arrays.asList(1, 2, 3));

@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-public class IteratorExample {
+public class ExternalIterator {
     public static void main(String[] args) {
         // 1. 다음의 코드는 관용구가 많고, 병렬처리하기 힘들며, 개발자의 의도를 정확하게 파악하지 못한다는 단점이 존재한다.
         List<Integer> arr = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
@@ -25,6 +25,7 @@ public class IteratorExample {
             Integer value = iterator.next();
             if (value % 2 == 0) {
                 count++;
+                System.out.println(count);
             }
         }
 
