@@ -1,6 +1,5 @@
 package com.example.lambdatest.chapter3;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -59,6 +58,38 @@ public class StreamMethodTest {
 
     @Test
     void filterTest() {
-        
+        // 기존 코드
+        List<String> beginningWithNumbers = new ArrayList<>();
+        for (String value : Arrays.asList("a", "1abc", "abc1")) {
+
+            if (Character.isDigit(value.charAt(0))) {
+                beginningWithNumbers.add(value);
+            }
+        }
+
+        assertEquals(Arrays.asList("1abc"), beginningWithNumbers);
+
+        // Stream.filter 적용
+        List<String> beginningWithNumbers2 = Stream.of("a", "1abc", "abc1")
+                .filter(value -> Character.isDigit(value.charAt(0)))
+                .collect(Collectors.toList());
+
+        assertEquals(Arrays.asList("1abc"), beginningWithNumbers2);
+
     }
+
+    /**
+     * flatMap 테스트
+     * 각각의 인자를 Stream 객체로 변환한 뒤, 새로운 Stream 객체를 생성한다.
+     */
+    @Test
+    void flatMapTest() {
+        List<Integer> together = Stream.of(Arrays.asList(1, 2), Arrays.asList(3, 4))
+                .flatMap(numbers -> numbers.stream())
+                .collect(Collectors.toList());
+
+        assertEquals(Arrays.asList(1, 2, 3, 4), together);
+    }
+
+
 }
