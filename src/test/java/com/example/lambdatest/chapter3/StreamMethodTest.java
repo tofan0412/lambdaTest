@@ -1,9 +1,11 @@
 package com.example.lambdatest.chapter3;
 
+import com.example.lambdatest.Track;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -90,6 +92,24 @@ public class StreamMethodTest {
 
         assertEquals(Arrays.asList(1, 2, 3, 4), together);
     }
+
+    /**
+     * Stream API의 min을 이용한 최대, 최소 구하기
+     */
+    @Test
+    void maxMinTest() {
+        List<Track> tracks = Arrays.asList(new Track("track 1", 1),
+                new Track("track 2", 2),
+                new Track("track 3", 3));
+
+        Track shortestTrack = tracks.stream()
+                .min(Comparator.comparing(track -> track.getTrackNo()))
+                .get();
+
+        assertEquals(tracks.get(0).getTrackNo(), shortestTrack.getTrackNo());
+    }
+
+
 
 
 }
